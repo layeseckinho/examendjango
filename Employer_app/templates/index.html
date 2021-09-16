@@ -1,0 +1,46 @@
+<!DOCTYPE>
+<!DOCTYPE html>
+<html>
+<head>
+  
+   {% load static %}
+   <link rel="stylesheet"  href="{% static 'style.css' %}">
+  
+	<title>Ajouter employer</title>
+</head>
+<body>
+	<center>
+		<div class="center">
+	<h1>Ajouter un employé</h1>
+	<form method="POST" class="post-form">
+
+		{% csrf_token %}
+		{{ form.as_p }}
+
+		<button type = "submit" cass="save btn">Enregistrer</button>
+	</form>
+	<table width="600" border="1" style="border-collapse: collapse;">
+		<thead>
+			<tr>
+				<th>Prenom</th> <th>nom</th> <th>mail</th> <th>contact</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for element in dataEmployee %}
+
+			<tr>
+				<td>{{ element.prenom }}</td>
+				<td>{{ element.nom }}</td>
+				<td>{{ element.mail }}</td>
+				<td>{{ element.tel }}</td>
+			</tr>
+
+			{% endfor %}
+		</tbody>
+	</table>
+	
+		</div>
+	</center>
+
+</body>
+</html>
